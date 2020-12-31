@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Realistic Drone/scenes/droneTest.unity
+  isLoaded: 1
+  isActive: 1
