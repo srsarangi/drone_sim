@@ -8,7 +8,7 @@ public class DroneMovementScript : MonoBehaviour
     void Awake(){
 
         ourDrone = GetComponent<Rigidbody>();
-         droneSound = gameObject.transform.FindChild("drone_sound").GetComponent<AudioSource>();
+         droneSound = gameObject.transform.Find("drone_sound").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

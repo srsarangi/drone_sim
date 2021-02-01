@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{61E51C0D-4495-64B7-9E3C-1BB3CA644EBA}</ProjectGuid>
+    <ProjectGuid>{1D938CC7-85CB-3387-66E4-AA6155805127}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -72,7 +72,7 @@
      <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\optimizations\twidOptimization\twiddleBehaviour.cs" />
      <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\optimizations\twidOptimization\twiddleManager.cs" />
      <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\optimizations\twidOptimization\twiddleSettings.cs" />
-     <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\PID.cs" />
+     <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\PID2.cs" />
      <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\rotor.cs" />
      <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\sensors\Accelerometer.cs" />
      <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\sensors\Barometer.cs" />
@@ -95,21 +95,31 @@
      <Compile Include="Assets\Realistic Drone\drone\Tools\lineDrawer.cs" />
      <Compile Include="Assets\Realistic Drone\lookAt.cs" />
      <Compile Include="Assets\Realistic Drone\screen.cs" />
+     <Compile Include="Assets\Scripts\GlitchImageEffect.cs" />
+     <Compile Include="Assets\Scripts\PID.cs" />
+     <Compile Include="Assets\Scripts\PIDController.cs" />
+     <Compile Include="Assets\Scripts\QuadcopterCameraFollow.cs" />
+     <Compile Include="Assets\Scripts\QuadcopterCollisionAvoidance.cs" />
+     <Compile Include="Assets\Scripts\QuadcopterController.cs" />
+     <Compile Include="Assets\Scripts\QuadcopterFPVCamera.cs" />
+     <Compile Include="Assets\Scripts\QuadcopterPathController.cs" />
+     <Compile Include="Assets\Scripts\QuadcopterPathManager.cs" />
+     <None Include="Assets\Shaders\GlitchShader.shader" />
      <None Include="Assets\Realistic Drone\README.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>E:/Drone Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>E:/Drone Project/Simulator/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>E:/Drone Project/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>E:/Drone Project/Simulator/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>E:/Drone Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>E:/Drone Project/Simulator/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>E:/Drone Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>E:/Drone Project/Simulator/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>E:/Drone Project/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>E:/Drone Project/Simulator/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.18f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -316,10 +326,10 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.18f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="DroneControllerPlugin">
- <HintPath>E:/Drone Project/Assets/Drones/DroneController/Plugins/DroneController/DroneControllerPlugin.dll</HintPath>
+ <HintPath>E:/Drone Project/Simulator/Assets/Drones/DroneController/Plugins/DroneController/DroneControllerPlugin.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>E:/Drone Project/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>E:/Drone Project/Simulator/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.18f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -666,6 +676,10 @@
  <Reference Include="System.Xml.Serialization">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.18f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{DF1EFE7F-41B8-413A-F01E-1BD6C232338C}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

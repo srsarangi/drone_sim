@@ -21,12 +21,12 @@ public class droneMovementController : MonoBehaviour {
     public rotor helixO2;
 
     // PIDs of the drone. Instanciated in run-time
-    public PID yawPID;
-    public PID rollPID;
-    public PID pitchPID;
-    public PID yPID;
-    public PID zPID;
-    public PID xPID;
+    public PID2 yawPID;
+    public PID2 rollPID;
+    public PID2 pitchPID;
+    public PID2 yPID;
+    public PID2 zPID;
+    public PID2 xPID;
 
     /// <summary>
     /// Used to simulate the torque applied to the drone, following the differences between the rotors power
@@ -136,7 +136,7 @@ public class droneMovementController : MonoBehaviour {
     /// Sets the PIDs of the drone
     /// <para>This function is used ONLY by the optimizations algorithm (Genetic and twiddle)</para>
     /// </summary>
-    public void setKs(PID yPID, PID zPID, PID xPID, PID pitchPID, PID rollPID, PID yawPID)
+    public void setKs(PID2 yPID, PID2 zPID, PID2 xPID, PID2 pitchPID, PID2 rollPID, PID2 yawPID)
     {
         //testing = true;
         this.xPID = xPID;
@@ -218,20 +218,20 @@ public class droneMovementController : MonoBehaviour {
         float acc = bar.getverticalAcc();
         float vel = bar.getverticalSpeed();
 
-        //calculates the idealVelocity, we'll use this to extract an error that will be given to the PID
+        //calculates the idealVelocity, we'll use this to extract an error that will be given to the PID2
         float idealVel = distanceToPoint * (testing ? constVertVel : droneSettings.constVerticalIdealVelocity);
         idealVel = droneSettings.keepOnRange(idealVel, droneSettings.saturationValues.minVerticalVel, droneSettings.saturationValues.maxVerticalVel);
 
-        //calculates the idealAcc, we'll use this to extract an error that will be given to the PID
+        //calculates the idealAcc, we'll use this to extract an error that will be given to the PID2
         float idealAcc = (idealVel - vel) * (testing ? constVertAcc : droneSettings.constVerticalIdealAcceler);
         idealAcc = droneSettings.keepOnRange(idealAcc, droneSettings.saturationValues.minVerticalAcc, droneSettings.saturationValues.maxVerticalAcc);
 
-        //Error used by the PID
+        //Error used by the PID2
         float Err = (idealAcc - acc);
 
         //If this is TRUE we are near the point and with a low velocity. It is not necessary to modify the Power
         if (Mathf.Abs(vel) + Mathf.Abs(distanceToPoint) > 0.005f)
-            //modifying the rotors rotation, using the output of the PID
+            //modifying the rotors rotation, using the output of the PID2
             modifyAllRotorsRotation(yPID.getU(Err, Time.deltaTime));        
     }
 
@@ -246,14 +246,14 @@ public class droneMovementController : MonoBehaviour {
         float acc = this.gyro.getRollAcc();
         float vel = this.gyro.getRollVel();
 
-        //calculates idealVelocity and idealAcceleration, we'll use this to extract an error that will be given to the PID
+        //calculates idealVelocity and idealAcceleration, we'll use this to extract an error that will be given to the PID2
         float idealVel = rollDistance * (testing ? constHorizVel : droneSettings.constHorizontalIdealVelocity);
         float idealAcc = (idealVel - vel) * (testing ? constHorizAcc : droneSettings.constHorizontalIdealAcceler);
 
-        //Error used by the PID
+        //Error used by the PID2
         float Err = (idealAcc - acc);
 
-        //modifying the rotors rotation, using the output of the PID
+        //modifying the rotors rotation, using the output of the PID2
         modifyRollRotorsRotation(rollPID.getU(-Err, Time.deltaTime));
     }
 
@@ -268,14 +268,14 @@ public class droneMovementController : MonoBehaviour {
         float acc = this.gyro.getPitchAcc();
         float vel = this.gyro.getPitchVel();
 
-        //calculates idealVelocity and idealAcceleration, we'll use this to extract an error that will be given to the PID
+        //calculates idealVelocity and idealAcceleration, we'll use this to extract an error that will be given to the PID2
         float idealVel = pitchDistance * (testing ? constHorizVel : droneSettings.constHorizontalIdealVelocity);
         float idealAcc = (idealVel - vel) * (testing ? constHorizAcc : droneSettings.constHorizontalIdealAcceler);
 
-        //Error used by the PID
+        //Error used by the PID2
         float Err = (idealAcc - acc);
 
-        //modifying the rotors rotation, using the output of the PID
+        //modifying the rotors rotation, using the output of the PID2
         modifyPitchRotorsRotation(pitchPID.getU(-Err, Time.deltaTime));
     }
 
@@ -290,15 +290,15 @@ public class droneMovementController : MonoBehaviour {
         float yawDistance = mag.getYaw() - idealYaw;
         yawDistance = (Mathf.Abs(yawDistance) < 1 ? yawDistance : (yawDistance > 0 ? yawDistance - 2 : yawDistance + 2));
 
-        //calculates idealVelocity, we'll use this to extract an error that will be given to the PID
+        //calculates idealVelocity, we'll use this to extract an error that will be given to the PID2
         float vel = mag.getYawVel();
         float idealVel = -yawDistance * (testing ? constYawVel : droneSettings.constYawIdealVelocity);
 
-        //Error used by the PID
+        //Error used by the PID2
         float Err = (idealVel - vel);
         Err *= Mathf.Abs(yawDistance) * (Mathf.Abs(yawDistance) > 0.3f ? -10 : -50);
 
-        //modifying the rotors rotation, using the output of the PID
+        //modifying the rotors rotation, using the output of the PID2
         float res = yawPID.getU(Err, Time.deltaTime);
         modifyPairsRotorsRotation(res);
 
@@ -318,13 +318,13 @@ public class droneMovementController : MonoBehaviour {
         float vel = this.acc.getLocalLinearVelocity().z;
         float yawVel = this.mag.getYawVel();
 
-        //calculates idealVelocity and idealAcceleration, we'll use this to extract an error that will be given to the PID
+        //calculates idealVelocity and idealAcceleration, we'll use this to extract an error that will be given to the PID2
         float idealVel = distanceToPoint * (testing ? constAxisVel : droneSettings.constAxisIdealVelocity);
         idealVel = droneSettings.keepOnAbsRange(idealVel, droneSettings.saturationValues.maxHorizontalVel);
         float idealAcc = (idealVel - vel) * (testing ? constAxisAcc : droneSettings.constAxisIdealAcceler);
         idealAcc = droneSettings.keepOnAbsRange(idealAcc, 3f);
 
-        //Error used by the PID
+        //Error used by the PID2
         float Err = (idealAcc - acc);
         Err *= 1 - keepOnRange01(Math.Abs(idealYaw - mag.getYaw()));
 
@@ -344,13 +344,13 @@ public class droneMovementController : MonoBehaviour {
         float acc = this.acc.getLinearAcceleration().x;
         float vel = this.acc.getLocalLinearVelocity().x;
 
-        //calculates idealVelocity and idealAcceleration, we'll use this to extract an error that will be given to the PID
+        //calculates idealVelocity and idealAcceleration, we'll use this to extract an error that will be given to the PID2
         float idealVel = distanceToPoint * (testing ? constAxisVel : droneSettings.constAxisIdealVelocity);
         idealVel = droneSettings.keepOnAbsRange(idealVel, droneSettings.saturationValues.maxHorizontalVel);
         float idealAcc = (idealVel - vel) * (testing ? constAxisAcc : droneSettings.constAxisIdealAcceler);
         idealAcc = droneSettings.keepOnAbsRange(idealAcc, 3f);
 
-        //Error used by the PID
+        //Error used by the PID2
         float Err = (idealAcc - acc);
         Err *= 1 - keepOnRange01(Math.Abs(idealYaw - mag.getYaw()));
 
@@ -390,12 +390,12 @@ public class droneMovementController : MonoBehaviour {
             gameObject.GetComponent<configReader>().enabled == false)
         { 
             // if not, we get the values from the settings
-            yPID = new PID(droneSettings.verticalPID_P, droneSettings.verticalPID_I, droneSettings.verticalPID_D, droneSettings.verticalPID_U);
-            yawPID = new PID(droneSettings.yawPID_P, droneSettings.yawPID_I, droneSettings.yawPID_D, droneSettings.yawPID_U);
-            rollPID = new PID(droneSettings.orizPID_P, droneSettings.orizPID_I, droneSettings.orizPID_D, droneSettings.orizPID_U);
-            pitchPID = new PID(droneSettings.orizPID_P, droneSettings.orizPID_I, droneSettings.orizPID_D, droneSettings.orizPID_U);
-            zPID = new PID(droneSettings.axisPID_P, droneSettings.axisPID_I, droneSettings.axisPID_D, droneSettings.axisPID_U);
-            xPID = new PID(droneSettings.axisPID_P, droneSettings.axisPID_I, droneSettings.axisPID_D, droneSettings.axisPID_U);
+            yPID = new PID2(droneSettings.verticalPID_P, droneSettings.verticalPID_I, droneSettings.verticalPID_D, droneSettings.verticalPID_U);
+            yawPID = new PID2(droneSettings.yawPID_P, droneSettings.yawPID_I, droneSettings.yawPID_D, droneSettings.yawPID_U);
+            rollPID = new PID2(droneSettings.orizPID_P, droneSettings.orizPID_I, droneSettings.orizPID_D, droneSettings.orizPID_U);
+            pitchPID = new PID2(droneSettings.orizPID_P, droneSettings.orizPID_I, droneSettings.orizPID_D, droneSettings.orizPID_U);
+            zPID = new PID2(droneSettings.axisPID_P, droneSettings.axisPID_I, droneSettings.axisPID_D, droneSettings.axisPID_U);
+            xPID = new PID2(droneSettings.axisPID_P, droneSettings.axisPID_I, droneSettings.axisPID_D, droneSettings.axisPID_U);
         }
 
         linedrawer = gameObject.GetComponent<lineDrawer>();

@@ -5,12 +5,12 @@ public abstract class OptimizationBehaviour : MonoBehaviour {
 
     // list of PIDs that will be initialized with the values of the training
     // and injected to the drone, substituting the default ones
-    protected PID yawPID;
-    protected PID rollPID;
-    protected PID pitchPID;
-    protected PID yPID;
-    protected PID zPID;
-    protected PID xPID;
+    protected PID2 yawPID;
+    protected PID2 rollPID;
+    protected PID2 pitchPID;
+    protected PID2 yPID;
+    protected PID2 zPID;
+    protected PID2 xPID;
 
     protected int id = 0;
     private static int idNr = 1;
@@ -148,12 +148,12 @@ public abstract class OptimizationBehaviour : MonoBehaviour {
         wpt = (wpt != null ? wpt : GetComponent<WaypointProgressTracker>());
 
         // initializing new PIDs
-        yPID = new PID(myVals[0], myVals[1], myVals[2], myVals[3]);
-        zPID = new PID(myVals[4], myVals[5], myVals[6], myVals[7]);
-        xPID = new PID(myVals[4], myVals[5], myVals[6], myVals[7]);
-        yawPID = new PID(myVals[8], myVals[9], myVals[10], myVals[11]);
-        rollPID = new PID(myVals[12], myVals[13], myVals[14], myVals[15]);
-        pitchPID = new PID(myVals[12], myVals[13], myVals[14], myVals[15]);
+        yPID = new PID2(myVals[0], myVals[1], myVals[2], myVals[3]);
+        zPID = new PID2(myVals[4], myVals[5], myVals[6], myVals[7]);
+        xPID = new PID2(myVals[4], myVals[5], myVals[6], myVals[7]);
+        yawPID = new PID2(myVals[8], myVals[9], myVals[10], myVals[11]);
+        rollPID = new PID2(myVals[12], myVals[13], myVals[14], myVals[15]);
+        pitchPID = new PID2(myVals[12], myVals[13], myVals[14], myVals[15]);
 
         // calls the functions in the droneMovementController to set the keys and the constants
         dmc.setKs(yPID, zPID, xPID, pitchPID, rollPID, yawPID);

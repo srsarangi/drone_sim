@@ -3543,6 +3543,10 @@ PrefabInstance:
       propertyPath: animationActivated
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11420676, guid: 979fc5f838d46744aa26f426a3934492, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 11459510, guid: 979fc5f838d46744aa26f426a3934492, type: 3}
       propertyPath: animationActivated
       value: 1
@@ -3562,6 +3566,26 @@ PrefabInstance:
     - target: {fileID: 11482200, guid: 979fc5f838d46744aa26f426a3934492, type: 3}
       propertyPath: maxDistFromCircuit
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 12000692, guid: 979fc5f838d46744aa26f426a3934492, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.6117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 12000692, guid: 979fc5f838d46744aa26f426a3934492, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.6117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 12000692, guid: 979fc5f838d46744aa26f426a3934492, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.6117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 12000692, guid: 979fc5f838d46744aa26f426a3934492, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 12019164, guid: 979fc5f838d46744aa26f426a3934492, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 979fc5f838d46744aa26f426a3934492, type: 3}
