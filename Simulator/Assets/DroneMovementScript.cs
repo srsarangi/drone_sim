@@ -10,6 +10,50 @@ public class DroneMovementScript : MonoBehaviour
         ourDrone = GetComponent<Rigidbody>();
          droneSound = gameObject.transform.Find("drone_sound").GetComponent<AudioSource>();
     }
+    public int numberOfRays = 12;
+public float angle = 60;
+public float targetVelocity = 10.0f;
+public float rayRange = 14;
+    // void Update()
+    // {             
+        
+
+    //     var deltaPosition = Vector3.zero;
+    //  for (int i = 0 ; i < numberOfRays;++i)
+    //  {
+    //      var rotation = this.transform.rotation;
+    //      var rotationMod = Quaternion.AngleAxis((i/((float)numberOfRays) * angle *2 - angle), this.transform.up);
+    //      var direction = rotation * rotationMod * Vector3.forward;
+            
+    //      var ray = new Ray( this.transform.position, direction);
+    //      RaycastHit hitInfo;
+    //      if (Physics.Raycast(ray,out hitInfo,rayRange))
+    //      {
+    //          deltaPosition -= (1.0f/numberOfRays)* targetVelocity* direction;
+    //      }
+    //      else 
+    //      {
+    //          deltaPosition += (1.0f/numberOfRays)* targetVelocity* direction;
+    //      }
+            
+    //  }
+    // this.transform.position += deltaPosition * Time.deltaTime;
+    // }
+    // void OnDrawGizmos()
+    // {
+
+    //     var deltaPosition = Vector3.zero;
+    //     for (int i = 0 ; i < numberOfRays;++i)
+    //     {
+    //         var rotation = this .transform.rotation;
+    //         var rotationMod = Quaternion.AngleAxis((i/((float)numberOfRays) * angle *2 - angle), this.transform.up);
+    //         var direction = rotation * rotationMod * Vector3.forward;
+    //         Gizmos.DrawRay(this.transform.position, direction);
+            
+    //     }
+        
+    // }
+
 
     // Update is called once per frame
     void FixedUpdate()   {
@@ -27,6 +71,7 @@ public class DroneMovementScript : MonoBehaviour
 
         
     }
+
     public float upForce;
     void MovementUpDown (){
         if ((Mathf.Abs(Input.GetAxis("Vertical"))>0.2f||Mathf.Abs(Input.GetAxis("Horizontal"))>0.2f )){
@@ -61,7 +106,7 @@ public class DroneMovementScript : MonoBehaviour
     	}
     	else if (!Input.GetKey(KeyCode.I) && !Input.GetKey(KeyCode.K) && (Mathf.Abs(Input.GetAxis("Vertical"))<0.2f && Mathf.Abs(Input.GetAxis("Horizontal")) <0.2f )){
     		upForce = 98.1f;
-    		Debug.Log("anit gravity not working");
+    		// Debug.Log("anit gravity not working");
 
     	}
     }
@@ -131,6 +176,7 @@ public class DroneMovementScript : MonoBehaviour
         void DroneSound(){
             droneSound.pitch = 1+ (ourDrone.velocity.magnitude /100);
         }
+
 
 
 

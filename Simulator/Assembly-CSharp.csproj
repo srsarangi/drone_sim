@@ -55,12 +55,15 @@
   <ItemGroup>
      <Compile Include="Assets\cameraFollowScript.cs" />
      <Compile Include="Assets\CammeraFollow.cs" />
+     <Compile Include="Assets\collisionAvoidance.cs" />
      <Compile Include="Assets\DroneMovementScript.cs" />
+     <Compile Include="Assets\DroneWaypointMovement.cs" />
      <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\CameraController.cs" />
      <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\DisplayController.cs" />
      <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\Hover.cs" />
      <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\Rotate.cs" />
      <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\TrackController.cs" />
+     <Compile Include="Assets\Path.cs" />
      <Compile Include="Assets\Realistic Drone\cameraBehaviour.cs" />
      <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\droneMovementController.cs" />
      <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\droneSettings.cs" />
