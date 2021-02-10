@@ -10,6 +10,7 @@ public class DroneWaypointMovement : MonoBehaviour
 	public float maxSteerAngle= 40f;
 	// Adjust the speed for the application.
     public float speed = 1.0f;
+    public float forwardSpeed = 20f;
 
     // The target (cylinder) position.
     private Transform target;
@@ -40,34 +41,69 @@ private int k =0;
     void FixedUpdate()
     {
     	
-        // ApplySteer();
+        //ApplySteer();
         MoveToNextNode();
         MoveInCircuit();
         Sensors();
-    }    
+    }
     // dont use now used in cars 
-	// void ApplySteer()
-	// {
+    //void ApplySteer()
+    //{
 
- //    	Vector3 reelativeVector = transform.InverseTransformPoint(nodes[currentNode].position);
- //    	float new maxSteer = (reelativeVector.x/ reelativeVector.magnitude)*maxSteerAngle;
- //    }
-    
-    
- 	void MoveToNextNode()
+    //    Vector3 reelativeVector = transform.InverseTransformPoint(nodes[currentNode1].position) ;
+    //    float newSteer = (reelativeVector.x / reelativeVector.magnitude) * maxSteerAngle ;
+    //    //Debug.Log(newSteer);
+    //}
+
+
+    void MoveToNextNode()
  	{
  		 float step =  speed * Time.deltaTime;
- 		
- 			transform.position = Vector3.MoveTowards(transform.position, nodes[currentNode1].position, step);
+        //Quaternion target_Rotation = Quaternion.Euler(currentNode1);
+        // Rotate the drone every frame so it keeps looking at the target
+        //transform.position = Vector3.MoveTowards(transform.position, nodes[currentNode1].position, step);
+        //transform.position += transform.forward * Time.deltaTime * 20f;
+        Vector3 relativePos = nodes[currentNode1].position - transform.position;
+        
 
- 		
- 			Vector3 relativePos = nodes[currentNode1].transform.position - transform.position;
-		   	Quaternion rotation = Quaternion.LookRotation(relativePos);
-		   	// transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime);
-		   	transform.rotation = rotation;
- 			
- 		}	
- 	void MoveInCircuit()
+        ////Quaternion rotation = Quaternion.LookRotation(relativePos);
+        ////transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime);
+        ////transform.rotation = rotation;
+        if ((relativePos.magnitude <= 2f) && (currentNode1 != nodes.Count))
+        {
+            //transform.rotation = Quaternion.LookRotation(-(transform.position - nodes[currentNode1].position));
+            currentNode1 ++;
+            Debug.Log(currentNode1);
+           //Debug.Log(nodes.Count);
+
+        }
+       if ((relativePos.magnitude <= 2f) && (currentNode1 == nodes.Count))
+        {
+            currentNode1 = 0;
+            Debug.Log(currentNode1);
+        }
+        transform.LookAt(nodes[currentNode1]);
+
+        
+        //transform.position = Vector3.MoveTowards(transform.position, nodes[currentNode1].position, step);
+        transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
+        // Determine which direction to rotate towards
+        //Vector3 targetDirection = target.position - transform.position;
+
+        //// The step size is equal to speed times frame time.
+        //float singleStep = speed * Time.deltaTime;
+
+        //// Rotate the forward vector towards the target direction by one step
+        //Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+
+        //// Draw a ray pointing at our target in
+        //Debug.DrawRay(transform.position, newDirection, Color.red);
+
+        //// Calculate a rotation a step closer to the target and applies rotation to this object
+        //transform.rotation = Quaternion.LookRotation(newDirection);
+
+    }
+    void MoveInCircuit()
  	{
  		if (Vector3.Distance(transform.position, nodes[currentNode1].position)<0.05f)
  		{
@@ -102,31 +138,32 @@ private int k =0;
  			{
  				Debug.DrawLine(sensorStartPosition, hit.point,Color.red);
  				avoiding = true;
- 				
 
- 				// transform.position = Vector3.MoveTowards(transform.position, nodes[currentNode1 --].position, 0.0f);
- 				// Debug.Log(transform.position);
- 				// Debug.Log(currentNode1);
- 				
- 				
 
- 				
- 				// if (currentNode1 ==0){
- 				// 	currentNode1= nodes.Count ;
- 				// 	Debug.Log(transform.position);
- 				// Debug.Log(currentNode1);
- 				// }
- 				// else
- 				// {
- 				// 	currentNode1 --;
- 				// 	Debug.Log(transform.position);
- 				// Debug.Log(nodes[currentNode1 ].position);
- 				// }
- 				
- 				
- 				
- 			} 
- 		}
+                // transform.position = Vector3.MoveTowards(transform.position, nodes[currentNode1 --].position, 0.0f);
+                // Debug.Log(transform.position);
+                // Debug.Log(currentNode1);
+
+
+
+
+                //if (currentNode1 == 0)
+                //{
+                //    currentNode1 = nodes.Count;
+                //    Debug.Log(transform.position);
+                //    Debug.Log(currentNode1);
+                //}
+                //else
+                //{
+                //    currentNode1--;
+                //    Debug.Log(transform.position);
+                //    Debug.Log(nodes[currentNode1].position);
+                //}
+
+
+
+            }
+        }
 
  		// Debug.Log(transform.position);
  		// right sensor
@@ -174,29 +211,31 @@ private int k =0;
 
  		}
  		if (avoiding)
- 		// { 
- 		// 	   leftSteer = maxSteerAngle * avoidMultiplier;
+        {
+            //leftSteer = maxSteerAngle * avoidMultiplier;
+            forwardSpeed = 0.001f;
 
- 		// }
- 		{
-		   Vector3 relativePos = nodes[currentNode1].transform.position - transform.position;
-		   Quaternion rotation = Quaternion.LookRotation(relativePos);
-		   transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime);
-		  }
-		  // Enemy translate in forward direction.
-		  // transform.Translate(Vector3.forward * Time.deltaTime * speed);
-		  // //Checking for any Obstacle in front.
-		  // // Two rays left and right to the object to detect the obstacle.
-		  // Transform leftRay = transform;
-		  // Transform rightRay = transform;
-	}
+        }
+
+        //{
+        //         // code to turn the drone in direction of the target
+        //  Vector3 relativePos = nodes[currentNode1].transform.position - transform.position;
+        //  Quaternion rotation = Quaternion.LookRotation(relativePos);
+        //  transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime);
+        // }
+        // Enemy translate in forward direction.
+        // transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        // //Checking for any Obstacle in front.
+        // // Two rays left and right to the object to detect the obstacle.
+        // Transform leftRay = transform;
+        // Transform rightRay = transform;
+    }
 
 private void OnCollisionEnter(Collision collision)
     {
 	//Display collision on console
         Debug.Log("Collision");
     }
-
 
 
 }
