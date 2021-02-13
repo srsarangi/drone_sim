@@ -77,6 +77,7 @@ private int k =0;
            //Debug.Log(nodes.Count);
 
         }
+        // when last node encountered then move to first node to form closed path
        if ((relativePos.magnitude <= 2f) && (currentNode1 == nodes.Count))
         {
             currentNode1 = 0;
@@ -195,8 +196,8 @@ private int k =0;
  			if (!hit.collider.CompareTag("Terrain"))
  			{
  				Debug.DrawLine(sensorStartPosition,hit.point);
- 				avoiding = true;
- 				avoidMultiplier += 1f;
+                avoiding = true;
+                avoidMultiplier += 1f;
  			} 
  		}
  		// left angle sensor 
@@ -204,16 +205,21 @@ private int k =0;
  		{
  			if (!hit.collider.CompareTag("Terrain"))
  			{
- 				Debug.DrawLine(sensorStartPosition,hit.point);
- 				avoiding = true;
- 				avoidMultiplier += 0.5f;
- 			}
+                Debug.DrawLine(sensorStartPosition, hit.point);
+                avoiding = true;
+                avoidMultiplier += 0.5f;
+            }
 
  		}
  		if (avoiding)
         {
             //leftSteer = maxSteerAngle * avoidMultiplier;
             forwardSpeed = 0.001f;
+
+        }
+        else
+        {
+            forwardSpeed = 20f;
 
         }
 
