@@ -116,25 +116,25 @@
      <None Include="Assets\Shaders\GlitchShader.shader" />
      <None Include="Assets\Realistic Drone\README.txt" />
  <Reference Include="UnityEngine.Purchasing">
- <HintPath>/media/kishore/E/Simulator/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
+ <HintPath>/home/kishore/Desktop/Simulator/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Purchasing">
- <HintPath>/media/kishore/E/Simulator/Library/ScriptAssemblies/UnityEditor.Purchasing.dll</HintPath>
+ <HintPath>/home/kishore/Desktop/Simulator/Library/ScriptAssemblies/UnityEditor.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>/media/kishore/E/Simulator/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>/home/kishore/Desktop/Simulator/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>/media/kishore/E/Simulator/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>/home/kishore/Desktop/Simulator/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>/media/kishore/E/Simulator/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>/home/kishore/Desktop/Simulator/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>/media/kishore/E/Simulator/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>/home/kishore/Desktop/Simulator/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>/media/kishore/E/Simulator/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>/home/kishore/Desktop/Simulator/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/home/kishore/Unity/Hub/Editor/2018.4.31f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -338,10 +338,10 @@
  <HintPath>/home/kishore/Unity/Hub/Editor/2018.4.31f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="DroneControllerPlugin">
- <HintPath>/media/kishore/E/Simulator/Assets/Drones/DroneController/Plugins/DroneController/DroneControllerPlugin.dll</HintPath>
+ <HintPath>/home/kishore/Desktop/Simulator/Assets/Drones/DroneController/Plugins/DroneController/DroneControllerPlugin.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>/media/kishore/E/Simulator/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>/home/kishore/Desktop/Simulator/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>/home/kishore/Unity/Hub/Editor/2018.4.31f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

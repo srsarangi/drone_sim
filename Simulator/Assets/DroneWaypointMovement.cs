@@ -11,6 +11,7 @@ public class DroneWaypointMovement : MonoBehaviour
 	// Adjust the speed for the application.
     public float speed = 1.0f;
     public float forwardSpeed = 20f;
+    public float avoidingSpeed = 20f;
 
     // The target (cylinder) position.
     private Transform target;
@@ -22,6 +23,9 @@ public class DroneWaypointMovement : MonoBehaviour
     public float frontSideSensorPosition = 1f;
     public float frontSensorAngle = 25f;
     public float sideSensorPosition =0.2f;
+
+    public Vector3 bottomSensorPosition = new Vector3(0f, -1.0f, 0f);
+
     private bool avoiding = false;
 
     void Start()
@@ -47,13 +51,13 @@ private int k =0;
         Sensors();
     }
     // dont use now used in cars 
-    //void ApplySteer()
-    //{
+    void ApplySteer()
+    {
 
-    //    Vector3 reelativeVector = transform.InverseTransformPoint(nodes[currentNode1].position) ;
-    //    float newSteer = (reelativeVector.x / reelativeVector.magnitude) * maxSteerAngle ;
-    //    //Debug.Log(newSteer);
-    //}
+       Vector3 reelativeVector = transform.InverseTransformPoint(nodes[currentNode1].position) ;
+       float newSteer = (reelativeVector.x / reelativeVector.magnitude) * maxSteerAngle ;
+       //Debug.Log(newSteer);
+    }
 
 
     void MoveToNextNode()
@@ -129,7 +133,7 @@ private int k =0;
  		sensorStartPosition += transform.up * frontSensorPosition.y;
  		float avoidMultiplier = 0;
  		avoiding = false;
-
+ 
  		// front sensor
  		if (Physics.Raycast(sensorStartPosition,transform.forward,out hit , sensorLength))
  		{
@@ -139,6 +143,8 @@ private int k =0;
  			{
  				Debug.DrawLine(sensorStartPosition, hit.point,Color.red);
  				avoiding = true;
+                
+                // transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
 
 
                 // transform.position = Vector3.MoveTowards(transform.position, nodes[currentNode1 --].position, 0.0f);
@@ -166,9 +172,42 @@ private int k =0;
             }
         }
 
- 		// Debug.Log(transform.position);
- 		// right sensor
- 		sensorStartPosition += transform.right * frontSideSensorPosition;
+
+
+        // // bottom angle sensor 
+        // // if (Physics.Raycast(sensorStartPosition, Quaternion.AngleAxis(-frontSensorAngle, transform.forward) * transform.forward, out hit, sensorLength))
+        // // {
+        // //     if (!hit.collider.CompareTag("Terrain"))
+        // //     {
+        // //         Debug.DrawLine(sensorStartPosition, hit.point);
+        // //         avoiding = true;
+        // //         // avoidMultiplier -= 0;
+        // //     }
+        // // }
+        
+        // sensorStartPosition += transform.forward * frontSensorPosition.z;
+        // sensorStartPosition += transform.forward * frontSensorPosition.y;
+       
+        // if (Physics.Raycast( sensorStartPosition, transform.forward, out hit, sensorLength))
+        // {
+        //     // Vector3 currentPosition = transform.position;
+        //     // Debug.Log(transform.position);
+        //     if (!hit.collider.CompareTag("Terrain"))
+        //     {
+        //         Debug.DrawLine(sensorStartPosition, hit.point, Color.red);
+        //         avoiding = true;
+        //     }}
+
+
+
+
+
+
+
+
+        // Debug.Log(transform.position);
+        // right sensor
+        sensorStartPosition += transform.right * frontSideSensorPosition;
  		if (Physics.Raycast(sensorStartPosition,transform.forward,out hit , sensorLength))
  		{
  			if (!hit.collider.CompareTag("Terrain"))
@@ -200,6 +239,7 @@ private int k =0;
                 avoidMultiplier += 1f;
  			} 
  		}
+         
  		// left angle sensor 
  		if (Physics.Raycast(sensorStartPosition,Quaternion.AngleAxis(-frontSensorAngle,transform.up)* transform.forward,out hit , sensorLength))
  		{
@@ -211,10 +251,14 @@ private int k =0;
             }
 
  		}
+       
  		if (avoiding)
         {
             //leftSteer = maxSteerAngle * avoidMultiplier;
             forwardSpeed = 0.001f;
+            avoidingSpeed =3.0f;
+            transform.Translate(Vector3.right * avoidingSpeed * Time.deltaTime);
+            // transform.Translate((Vector3.up ) * avoidingSpeed * Time.deltaTime);
 
         }
         else

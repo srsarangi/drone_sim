@@ -7990,6 +7990,10 @@ PrefabInstance:
       propertyPath: sensorLength
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 1421480426, guid: 8b826a7c5dffaf04d99fa3f39f8d9060, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1550862353105976, guid: 8b826a7c5dffaf04d99fa3f39f8d9060, type: 3}
       propertyPath: m_IsActive
       value: 1
