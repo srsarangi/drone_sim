@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Realistic Drone/scenes/AutoSwarm.unity
+- path: Assets/Realistic Drone/scenes/WelcomeScreen.unity
   isLoaded: 1
   isActive: 1
