@@ -19,7 +19,7 @@ EditorBuildSettings:
     guid: d8c50d96378ac1f498d60cd1b3df29fc
   - enabled: 1
     path: Assets/Realistic Drone/scenes/WelcomeScreen.unity
-    guid: ccfbdc5b478cb8e4e82e816b524a42c2
+    guid: 8a000591bda8c764f8feb63fb108a277
   - enabled: 1
     path: Assets/Realistic Drone/scenes/navScene 2.unity
     guid: 1a349042eec581a539ee33cb70f28e60
