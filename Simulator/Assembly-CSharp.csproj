@@ -55,8 +55,10 @@
   <ItemGroup>
      <Compile Include="Assets\cameraFollowScript.cs" />
      <Compile Include="Assets\CammeraFollow.cs" />
+     <Compile Include="Assets\CamToRawImage.cs" />
      <Compile Include="Assets\collisionAvoidance.cs" />
      <Compile Include="Assets\DroneMovementScript.cs" />
+     <Compile Include="Assets\DroneSimpleMove.cs" />
      <Compile Include="Assets\DroneWaypointMovement.cs" />
      <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\CameraController.cs" />
      <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\DisplayController.cs" />
