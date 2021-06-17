@@ -1,17 +1,18 @@
 # *Drone Simulator*
 
-**Control Of Drone Swarm**
+**Control Of Drone Swarm from Single Control Station**
 
 Drones have developed in recent years specially the small size drones. Drones are very effective in modern day as they can be remotely controlled and are able to deliver the payload effectively. 
 
 Multiple drones when flown in coordination with each other constitute the drone swarm. This swarming of drones enhances the capabilities of flight packages and these could be used for defensive and offensive action based on the configuration of the package. 
 
-*Drone Project* 
+**Drone Project** 
 
-Project involved the practical part were in the drone had to be flown  in different scenarios with varying velocity, angles,deruation and paths.
+***Drone Flying.*** Project involved the practical part were in the drone had to be flown  in different scenarios with varying velocity, angles,deruation and paths.
 
-The second part of the project was to build a simulator where 
-different scenarios of drone flights are simulated.
+***Simulator.*** The second part of the project was to build a simulator where different scenarios of drone flights are simulated. In this realistic drone from unity assets store Annanas proj was used as a base project to provide environment to build upon.
+https://assetstore.unity.com/packages/3d/vehicles/air/realistic-drone-66698
+
 
 The different scenarios simulated are as follows :- 
 1. **Manual flight.** Drones moves using curser movement keys and WASD keys, for rotation and Up down movement JLIK keys are used.
@@ -38,7 +39,17 @@ Tutorial Followed https://www.youtube.com/watch?v=3R_V4gqTs_I
 
 5.	**Path Finding using Navmesh.** Unity NavMesh AI is used for auto path finding. Nav mesh uses A* algorithm for path finding. Further details can be viewed from 
 https://docs.unity3d.com/ScriptReference/AI.NavMesh.html
+
 	1.	**Drone Swarming.** Single path in combination with follow the leader is used).
+
 	2. 	**Indipendent Drones.** Indipendent path for each drones implemented. The target for the drones are kept same. Drones located at different locations of the seen take different paths for reaching destination.
 
 
+Credits :-
+
+![Indian Institute of Technology Delhi Logo](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/iitdLogo.jpg=50x50)
+![Kishore Yadav Student M Tech CSE IITD](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/Kishore%20Yadav.jpg)
+![Prof SR Sarangi IITD](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/ProfSarangi.jpg=100x100)
+
+Contributers of Links as mentioned above against each work 
+Models of UTS pro
