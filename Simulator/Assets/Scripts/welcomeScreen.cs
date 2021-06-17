@@ -40,9 +40,9 @@ public class welcomeScreen : MonoBehaviour
    	SceneManager.LoadScene("1.5_Circuit_In_Environment");
 
    }
-    public void WeatherEffects()
+    public void DroneCamera()
    {
-   	SceneManager.LoadScene("WeatherEffects");
+   	SceneManager.LoadScene("DroneCamera");
 
    }
     public void Credits()

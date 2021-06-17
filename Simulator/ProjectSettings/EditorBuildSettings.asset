@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Realistic Drone/scenes/1_Circuit.unity
     guid: 5849da7b3ec64b249851441d79fff791
+  - enabled: 1
+    path: Assets/Realistic Drone/scenes/DroneCamera.unity
+    guid: b65fcb4b8c581b84dbe9cf0ead71a226
   m_configObjects: {}

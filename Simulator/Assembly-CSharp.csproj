@@ -60,13 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\cameraFollowScript.cs" />
-    <Compile Include="Assets\CammeraFollow.cs" />
-    <Compile Include="Assets\CamToRawImage.cs" />
-    <Compile Include="Assets\collisionAvoidance.cs" />
-    <Compile Include="Assets\DroneMovementScript.cs" />
-    <Compile Include="Assets\DroneSimpleMove.cs" />
-    <Compile Include="Assets\DroneWaypointMovement.cs" />
     <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\CameraController.cs" />
     <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\DisplayController.cs" />
     <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\Hover.cs" />
@@ -76,7 +69,6 @@
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifier.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
-    <Compile Include="Assets\Path.cs" />
     <Compile Include="Assets\Realistic Drone\cameraBehaviour.cs" />
     <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\droneMovementController.cs" />
     <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\droneSettings.cs" />
@@ -110,20 +102,28 @@
     <Compile Include="Assets\Realistic Drone\drone\Tools\dataSaver.cs" />
     <Compile Include="Assets\Realistic Drone\drone\Tools\lineDrawer.cs" />
     <Compile Include="Assets\Realistic Drone\lookAt.cs" />
-    <Compile Include="Assets\Realistic Drone\scenes\creditsScreenScript.cs" />
     <Compile Include="Assets\Realistic Drone\scenes\navScene\playerController.cs" />
     <Compile Include="Assets\Realistic Drone\screen.cs" />
-    <Compile Include="Assets\Scripts\GlitchImageEffect.cs" />
-    <Compile Include="Assets\Scripts\PID.cs" />
-    <Compile Include="Assets\Scripts\PIDController.cs" />
-    <Compile Include="Assets\Scripts\QuadcopterCameraFollow.cs" />
-    <Compile Include="Assets\Scripts\QuadcopterCollisionAvoidance.cs" />
-    <Compile Include="Assets\Scripts\QuadcopterController.cs" />
-    <Compile Include="Assets\Scripts\QuadcopterFPVCamera.cs" />
-    <Compile Include="Assets\Scripts\QuadcopterPathController.cs" />
-    <Compile Include="Assets\Scripts\QuadcopterPathManager.cs" />
-    <Compile Include="Assets\Swarming.cs" />
-    <Compile Include="Assets\welcomeScreen.cs" />
+    <Compile Include="Assets\Scripts\cameraFollowScript.cs" />
+    <Compile Include="Assets\Scripts\CammeraFollow.cs" />
+    <Compile Include="Assets\Scripts\CamToRawImage.cs" />
+    <Compile Include="Assets\Scripts\collisionAvoidance.cs" />
+    <Compile Include="Assets\Scripts\creditsScreenScript.cs" />
+    <Compile Include="Assets\Scripts\DroneMovementScript.cs" />
+    <Compile Include="Assets\Scripts\DroneSimpleMove.cs" />
+    <Compile Include="Assets\Scripts\DroneWaypointMovement.cs" />
+    <Compile Include="Assets\Scripts\Path.cs" />
+    <Compile Include="Assets\Scripts\Swarming.cs" />
+    <Compile Include="Assets\Scripts\welcomeScreen.cs" />
+    <Compile Include="Assets\Scripts2NotUsed Dumped for future use\GlitchImageEffect.cs" />
+    <Compile Include="Assets\Scripts2NotUsed Dumped for future use\PID.cs" />
+    <Compile Include="Assets\Scripts2NotUsed Dumped for future use\PIDController.cs" />
+    <Compile Include="Assets\Scripts2NotUsed Dumped for future use\QuadcopterCameraFollow.cs" />
+    <Compile Include="Assets\Scripts2NotUsed Dumped for future use\QuadcopterCollisionAvoidance.cs" />
+    <Compile Include="Assets\Scripts2NotUsed Dumped for future use\QuadcopterController.cs" />
+    <Compile Include="Assets\Scripts2NotUsed Dumped for future use\QuadcopterFPVCamera.cs" />
+    <Compile Include="Assets\Scripts2NotUsed Dumped for future use\QuadcopterPathController.cs" />
+    <Compile Include="Assets\Scripts2NotUsed Dumped for future use\QuadcopterPathManager.cs" />
     <None Include="Assets\Shaders\GlitchShader.shader" />
     <None Include="Assets\Realistic Drone\README.txt" />
     <Reference Include="UnityEngine.Purchasing">
