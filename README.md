@@ -47,9 +47,11 @@ https://docs.unity3d.com/ScriptReference/AI.NavMesh.html
 
 Credits :-
 
-![Indian Institute of Technology Delhi Logo](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/iitdLogo.jpg=50x50)
-![Kishore Yadav Student M Tech CSE IITD](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/Kishore%20Yadav.jpg)
-![Prof SR Sarangi IITD](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/ProfSarangi.jpg=100x100)
+![Indian Institute of Technology Delhi Logo](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/iitdLogo.jpg)  
+
+![Kishore Yadav Student M Tech CSE IITD](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/Kishore%20Yadav.jpg)  
+
+![Prof SR Sarangi IITD](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/ProfSarangi.jpg)  
 
 Contributers of Links as mentioned above against each work 
 Models of UTS pro
