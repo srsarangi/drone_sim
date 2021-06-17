@@ -2,6 +2,8 @@
 
 **Control Of Drone Swarm from Single Control Station**
 
+![Drone Swarm](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/Images/MainImage.png)  
+
 Drones have developed in recent years specially the small size drones. Drones are very effective in modern day as they can be remotely controlled and are able to deliver the payload effectively. 
 
 Multiple drones when flown in coordination with each other constitute the drone swarm. This swarming of drones enhances the capabilities of flight packages and these could be used for defensive and offensive action based on the configuration of the package. 
