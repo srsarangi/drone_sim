@@ -6,7 +6,7 @@ public class Swarming : MonoBehaviour
 {
      private Transform myDrone;
    void Awake(){
-   	myDrone= GameObject.FindGameObjectWithTag("RedDrone").transform;
+   	//myDrone= GameObject.FindGameObjectWithTag("RedDrone").transform;
    }
    private Vector3 velocityCameraFollow;
    public Vector3 behindPosition = new Vector3 (3,2,-6);
