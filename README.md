@@ -13,8 +13,11 @@ Multiple drones when flown in coordination with each other constitute the drone 
 ***Simulator.*** The second part of the project was to build a simulator where different scenarios of drone flights are simulated. In this realistic drone from unity assets store Annanas proj was used as a base project to provide environment to build upon.
 https://assetstore.unity.com/packages/3d/vehicles/air/realistic-drone-66698
 
+Drone model 
+https://assetstore.unity.com/packages/3d/props/red-drone-142071?free=true&q=drone&orderBy=1
 
 The different scenarios simulated are as follows :- 
+
 1. **Manual flight.** Drones moves using curser movement keys and WASD keys, for rotation and Up down movement JLIK keys are used.
 Tutorial Followed https://www.youtube.com/watch?v=3R_V4gqTs_I
 
@@ -47,11 +50,11 @@ https://docs.unity3d.com/ScriptReference/AI.NavMesh.html
 
 Credits :-
 
-![Indian Institute of Technology Delhi Logo](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/iitdLogo.jpg)  
+Contributers of Links as mentioned above against each work
 
-![Kishore Yadav Student M Tech CSE IITD](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/Kishore%20Yadav.jpg)  
-
-![Prof SR Sarangi IITD](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/ProfSarangi.jpg)  
-
-Contributers of Links as mentioned above against each work 
 Models of UTS pro
+
+
+![Indian Institute of Technology Delhi Logo](https://github.com/srsarangi/drone_sim/blob/main/Simulator/Assets/Images/creditsImage.jpg)  
+
+
