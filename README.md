@@ -45,9 +45,9 @@ Tutorial Followed https://www.youtube.com/watch?v=3R_V4gqTs_I
 5.    **Path Finding using Navmesh.** Unity NavMesh AI is used for auto path finding. Nav mesh uses A* algorithm for path finding. Further details can be viewed from
 https://docs.unity3d.com/ScriptReference/AI.NavMesh.html
 
-    1.    **Drone Swarming.** Single path in combination with follow the leader is used).
+	1.	**Drone Swarming.** Single path in combination with follow the leader is used).
 
-    2.     **Independent Drones.** Independent path for each drone implemented. The target for the drones is kept the same. Drones located at different locations of the scene take different paths for reaching their destination.
+	2.	**Independent Drones.** Independent path for each drone implemented. The target for the drones is kept the same. Drones located at different locations of the scene take different paths for reaching their destination.
 
 
 Credits :-
