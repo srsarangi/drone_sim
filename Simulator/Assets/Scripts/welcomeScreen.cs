@@ -27,7 +27,7 @@ public class welcomeScreen : MonoBehaviour
    }
     public void SinglePath()
    {
-   	SceneManager.LoadScene("NavSceneCity");
+   	SceneManager.LoadScene("SinglePath");
 
    }
     public void CreditsScreen()
