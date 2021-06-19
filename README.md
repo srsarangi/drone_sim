@@ -11,11 +11,10 @@ Multiple drones when flown in coordination with each other constitute the drone 
 **Drone Project**
 
 ***System Configuration for Simulator***  
-
 Tested on   
-Unity  Editor Version    OS  
-Unity 2018.4.18f1    	Windows 10  
-Unity 2018.4.31f1    	Ubuntu 18.04  
+Unity  Editor Version    		OS  
+Unity 2018.4.18f1    			Windows 10  
+Unity 2018.4.31f1    			Ubuntu 18.04  
 
 ***System Requirements for Simulator***  
 Unity editor 2018.4.x.x windows / ubuntu OS  
