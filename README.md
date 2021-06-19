@@ -29,13 +29,13 @@ Navigate to required scene from welcome screen
 	Scripts are placed in Scripts folder
 	Scene are placed in Drone Project/Simulator/Assets/Realistic Drone/scenes folder
 	Old Annanas Proj scene Drone Project/Simulator/Assets/Realistic Drone/scenes/Old RealisticDrone Scene
-	car and People models are placed in Drone Project\Simulator\Assets\UTS_PRO\Models
+	car and People models are placed in Drone Project/Simulator/Assets/UTS_PRO/Models
 	RawImages folder conatin rawimages for drone camera project
 	Prefabs are placed in prefab foder
-	Abandoned buildings prefabs and scene placed in Drone Project\Simulator\Assets\Abandoned buildings
-	Drones models for future use Drone Project\Simulator\Assets\Military Aircraft Pack
-	Scene of QuadcopterController are placed in Drone Project\Simulator\Assets\ScenesQuadcopterController (dumped for future use)
-	Scripts for QuadcopterController are placed Drone Project\Simulator\Assets\ScriptsQuadcopterControllerNotUsed Dumped for future use
+	Abandoned buildings prefabs and scene placed in Drone Project/Simulator/Assets/Abandoned buildings
+	Drones models for future use Drone Project/Simulator/Assets/Military Aircraft Pack
+	Scene of QuadcopterController are placed in Drone Project/Simulator/Assets/ScenesQuadcopterController (dumped for future use)
+	Scripts for QuadcopterController are placed Drone Project/Simulator/Assets/ScriptsQuadcopterControllerNotUsed Dumped for future use
 	Materials and Sahders are palced in their respective folder
 
 
