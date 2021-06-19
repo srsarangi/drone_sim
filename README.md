@@ -25,7 +25,7 @@ Install Unity in OS and open the simulator folder
 Select Welcome screen press play  
 Navigate to required scene from welcome screen  
 
-***Structure of Simulator*** 
+***Structure of Simulator Project***  
 	Scripts are placed in Scripts folder
 	Scene are placed in Drone Project/Simulator/Assets/Realistic Drone/scenes folder
 	Old Annanas Proj scene Drone Project/Simulator/Assets/Realistic Drone/scenes/Old RealisticDrone Scene
