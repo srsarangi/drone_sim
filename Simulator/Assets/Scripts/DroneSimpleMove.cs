@@ -10,10 +10,16 @@ public class DroneSimpleMove : MonoBehaviour
     public KeyCode m_BackwardButton = KeyCode.S;
     public KeyCode m_RightButton = KeyCode.D;
     public KeyCode m_LeftButton = KeyCode.A;
-    public KeyCode m_UpButton = KeyCode.Q;
-    public KeyCode m_DownButton = KeyCode.E;
+    public KeyCode m_UpButton = KeyCode.K;
+    public KeyCode m_DownButton = KeyCode.I;
 
-    private void Update ()
+    void FixedUpdate()
+    {
+
+        Rotation2();
+    }
+
+        private void Update ()
     {
         // translation
         {
@@ -27,15 +33,25 @@ public class DroneSimpleMove : MonoBehaviour
 			transform.position += dir * m_MoveSpeed * Time.deltaTime;
         }
         // rotation
+       
+
+    }
+    private float wantedYRotation2;
+    [HideInInspector] public float currentYRotation2;
+    private float rorateAmountByKeys2 = 2.5f;
+    private float rotationYVelocity2;
+    void Rotation2()
+    {
+
+        if (Input.GetKey(KeyCode.J))
         {
-            if (Input.GetMouseButton (0))
-            {
-                Vector3 eulerAngles = transform.eulerAngles;
-				eulerAngles.x += -Input.GetAxis("Mouse Y") * 359f * m_RotateSpeed;
-				eulerAngles.y += Input.GetAxis("Mouse X") * 359f * m_RotateSpeed;
-                transform.eulerAngles = eulerAngles;
-            }
+            wantedYRotation2 -= rorateAmountByKeys2;
         }
+        if (Input.GetKey(KeyCode.L))
+        {
+            wantedYRotation2 += rorateAmountByKeys2;
+        }
+        currentYRotation2 = Mathf.SmoothDamp(currentYRotation2, wantedYRotation2, ref rotationYVelocity2, 0.25f);
     }
     private void Move (KeyCode key, ref Vector3 moveTo, Vector3 dir)
     {
