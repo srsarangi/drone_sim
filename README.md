@@ -10,20 +10,21 @@ Multiple drones when flown in coordination with each other constitute the drone 
 
 **Drone Project**
 
-***System Configuration for Simulator***
-Tested on 
-Unity  Editor Version    OS
-Unity 2018.4.18f1    	Windows 10
-Unity 2018.4.31f1    	Ubuntu 18.04
+***System Configuration for Simulator***  
 
-***System Requirements for Simulator***
-Unity editor 2018.4.x.x windows / ubuntu OS
-Text editor for C# 
+Tested on   
+Unity  Editor Version    OS  
+Unity 2018.4.18f1    	Windows 10  
+Unity 2018.4.31f1    	Ubuntu 18.04  
 
-***How to run Simulator***
-Install Unity in OS and open the simulator folder
-select seen welcome screen press play
-Navigate to required scene from welcome screen
+***System Requirements for Simulator***  
+Unity editor 2018.4.x.x windows / ubuntu OS  
+Text editor for C#   
+
+***How to run Simulator***  
+Install Unity in OS and open the simulator folder  
+select seen welcome screen press play  
+Navigate to required scene from welcome screen  
 
 ***Drone Flying.*** Project involved the practical part where the drone had to be flown  in different scenarios with varying velocity, angles,duration and paths.
 
@@ -73,7 +74,7 @@ Contributors of Links as mentioned above against each work
 Models of UTS pro - for testing to be replaced before release
 
 
-Kishore Yadav Student M Tech CSE IITD
-Diksha Moolchandani Student PHD  CSE IITD
-Prof. SR Sarangi CSE IITD
+Kishore Yadav Student M Tech CSE IITD  
+Diksha Moolchandani Student PHD  CSE IITD  
+Prof. SR Sarangi CSE IITD  
 
