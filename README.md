@@ -33,9 +33,6 @@ Navigate to required scene from welcome screen
 	RawImages folder contain raw images for drone camera project  
 	Prefabs are placed in prefab folder  
 	Abandoned buildings prefabs and scene placed in Drone Project/Simulator/Assets/Abandoned buildings  
-	Drones models for future use Drone Project/Simulator/Assets/Military Aircraft Pack  
-	Scene of QuadcopterController are placed in Drone Project/Simulator/Assets/ScenesQuadcopterController (dumped for future use)  
-	Scripts for QuadcopterController are placed Drone Project/Simulator/Assets/ScriptsQuadcopterControllerNotUsed Dumped for future use  
 	Materials and Shaders are placed in their respective folder  
  
 
