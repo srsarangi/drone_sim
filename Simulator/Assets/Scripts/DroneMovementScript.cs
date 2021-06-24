@@ -1,3 +1,4 @@
+//Tutorial Followed https://www.youtube.com/watch?v=3R_V4gqTs_I
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,57 +15,19 @@ public class DroneMovementScript : MonoBehaviour
 public float angle = 60;
 public float targetVelocity = 10.0f;
 public float rayRange = 14;
-    // void Update()
-    // {             
-        
-
-    //     var deltaPosition = Vector3.zero;
-    //  for (int i = 0 ; i < numberOfRays;++i)
-    //  {
-    //      var rotation = this.transform.rotation;
-    //      var rotationMod = Quaternion.AngleAxis((i/((float)numberOfRays) * angle *2 - angle), this.transform.up);
-    //      var direction = rotation * rotationMod * Vector3.forward;
-            
-    //      var ray = new Ray( this.transform.position, direction);
-    //      RaycastHit hitInfo;
-    //      if (Physics.Raycast(ray,out hitInfo,rayRange))
-    //      {
-    //          deltaPosition -= (1.0f/numberOfRays)* targetVelocity* direction;
-    //      }
-    //      else 
-    //      {
-    //          deltaPosition += (1.0f/numberOfRays)* targetVelocity* direction;
-    //      }
-            
-    //  }
-    // this.transform.position += deltaPosition * Time.deltaTime;
-    // }
-    // void OnDrawGizmos()
-    // {
-
-    //     var deltaPosition = Vector3.zero;
-    //     for (int i = 0 ; i < numberOfRays;++i)
-    //     {
-    //         var rotation = this .transform.rotation;
-    //         var rotationMod = Quaternion.AngleAxis((i/((float)numberOfRays) * angle *2 - angle), this.transform.up);
-    //         var direction = rotation * rotationMod * Vector3.forward;
-    //         Gizmos.DrawRay(this.transform.position, direction);
-            
-    //     }
-        
-    // }
+    
 
 
     // Update is called once per frame
     void FixedUpdate()   {
-    	MovementUpDown();
-    	MovementForward();
-    	
-    	Swerwing();
-    	Rotation();
-        DroneSound();
-    	ClampingSpeedValues();
-    	ourDrone.AddRelativeForce(Vector3.up * upForce);
+        MovementUpDown();           // for  vertical movement of drone
+        MovementForward();          // for forward movement of drone    	
+        Swerwing();                 // for sideways movement of drone
+        Rotation();                 // For rotation of drone about its axis 
+        DroneSound();               // to implement drone sound
+        ClampingSpeedValues();      // to clamp the max speed value 
+
+        ourDrone.AddRelativeForce(Vector3.up * upForce);
     	ourDrone.rotation = Quaternion.Euler(
 		new Vector3(tiltAmountForward,currentYRotation,tiltAmountSideways)
     		);

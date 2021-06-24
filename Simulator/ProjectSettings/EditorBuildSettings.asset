@@ -6,33 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Realistic Drone/scenes/ManualSwarm.unity
+    path: Assets/scenes/ManualSwarm.unity
     guid: a1382f66601b7afa38be846a305efc8b
   - enabled: 1
-    path: Assets/Realistic Drone/scenes/AutoSwarm.unity
+    path: Assets/scenes/AutoSwarm.unity
     guid: dca949940aa93e34d8e56b835f5301bc
   - enabled: 1
-    path: Assets/Realistic Drone/scenes/FollowLeaderSwarm.unity
+    path: Assets/scenes/FollowLeaderSwarm.unity
     guid: ffa2c4851d521b6e6af244f2099a6ba0
   - enabled: 1
-    path: Assets/Realistic Drone/scenes/CreditsScreen.unity
+    path: Assets/scenes/CreditsScreen.unity
     guid: d8c50d96378ac1f498d60cd1b3df29fc
   - enabled: 1
-    path: Assets/Realistic Drone/scenes/WelcomeScreen.unity
+    path: Assets/scenes/WelcomeScreen.unity
     guid: 8a000591bda8c764f8feb63fb108a277
   - enabled: 1
-    path: Assets/Realistic Drone/scenes/navScene 2.unity
+    path: Assets/scenes/navScene 2.unity
     guid: 1a349042eec581a539ee33cb70f28e60
   - enabled: 1
-    path: Assets/Realistic Drone/scenes/NavSceneCity.unity
+    path: Assets/scenes/NavSceneCity.unity
     guid: 0c2c0f30a312eeb5c82e737d40ae5fe9
   - enabled: 1
-    path: Assets/Realistic Drone/scenes/Old RealisticDrone Scene/1_Circuit.unity
+    path: Assets/scenes/Old RealisticDrone Scene/1_Circuit.unity
     guid: 5849da7b3ec64b249851441d79fff791
   - enabled: 1
-    path: Assets/Realistic Drone/scenes/DroneCamera.unity
+    path: Assets/scenes/DroneCamera.unity
     guid: b65fcb4b8c581b84dbe9cf0ead71a226
   - enabled: 1
-    path: Assets/Realistic Drone/scenes/SinglePath.unity
+    path: Assets/scenes/SinglePath.unity
     guid: 06ec9211e75d40e4c8b54293671cbe7f
   m_configObjects: {}

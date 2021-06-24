@@ -60,16 +60,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\DisplayController.cs" />
-    <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\Hover.cs" />
-    <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\Rotate.cs" />
-    <Compile Include="Assets\Military Aircraft Pack\Demo Scene\Scripts\TrackController.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshLink.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifier.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
-    <Compile Include="Assets\Realistic Drone\cameraBehaviour.cs" />
     <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\droneMovementController.cs" />
     <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\droneSettings.cs" />
     <Compile Include="Assets\Realistic Drone\drone\Level0_Stabilizing\optimizations\geneticOptimization\GAmanager.cs" />
@@ -101,9 +95,8 @@
     <Compile Include="Assets\Realistic Drone\drone\Tools\dataReader.cs" />
     <Compile Include="Assets\Realistic Drone\drone\Tools\dataSaver.cs" />
     <Compile Include="Assets\Realistic Drone\drone\Tools\lineDrawer.cs" />
-    <Compile Include="Assets\Realistic Drone\lookAt.cs" />
-    <Compile Include="Assets\Realistic Drone\scenes\navScene\playerController.cs" />
-    <Compile Include="Assets\Realistic Drone\screen.cs" />
+    <Compile Include="Assets\scenes\navScene\playerController.cs" />
+    <Compile Include="Assets\Scripts\cameraBehaviour.cs" />
     <Compile Include="Assets\Scripts\cameraFollowScript.cs" />
     <Compile Include="Assets\Scripts\CammeraFollow.cs" />
     <Compile Include="Assets\Scripts\CamToRawImage.cs" />
@@ -112,18 +105,11 @@
     <Compile Include="Assets\Scripts\DroneMovementScript.cs" />
     <Compile Include="Assets\Scripts\DroneSimpleMove.cs" />
     <Compile Include="Assets\Scripts\DroneWaypointMovement.cs" />
+    <Compile Include="Assets\Scripts\lookAt.cs" />
     <Compile Include="Assets\Scripts\Path.cs" />
+    <Compile Include="Assets\Scripts\screen.cs" />
     <Compile Include="Assets\Scripts\Swarming.cs" />
     <Compile Include="Assets\Scripts\welcomeScreen.cs" />
-    <Compile Include="Assets\ScriptsQuadcopterControllerNotUsed Dumped for future use\GlitchImageEffect.cs" />
-    <Compile Include="Assets\ScriptsQuadcopterControllerNotUsed Dumped for future use\PID.cs" />
-    <Compile Include="Assets\ScriptsQuadcopterControllerNotUsed Dumped for future use\PIDController.cs" />
-    <Compile Include="Assets\ScriptsQuadcopterControllerNotUsed Dumped for future use\QuadcopterCameraFollow.cs" />
-    <Compile Include="Assets\ScriptsQuadcopterControllerNotUsed Dumped for future use\QuadcopterCollisionAvoidance.cs" />
-    <Compile Include="Assets\ScriptsQuadcopterControllerNotUsed Dumped for future use\QuadcopterController.cs" />
-    <Compile Include="Assets\ScriptsQuadcopterControllerNotUsed Dumped for future use\QuadcopterFPVCamera.cs" />
-    <Compile Include="Assets\ScriptsQuadcopterControllerNotUsed Dumped for future use\QuadcopterPathController.cs" />
-    <Compile Include="Assets\ScriptsQuadcopterControllerNotUsed Dumped for future use\QuadcopterPathManager.cs" />
     <None Include="Assets\Shaders\GlitchShader.shader" />
     <None Include="Assets\Realistic Drone\README.txt" />
     <Reference Include="UnityEngine.Purchasing">
