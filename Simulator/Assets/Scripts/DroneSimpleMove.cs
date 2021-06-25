@@ -1,4 +1,6 @@
-﻿
+﻿// The effect of this script is same as Drone manula movement 
+// in this case the drone movemnt is made slower for better control
+// The ttilt motions have been removed , so it is very basic movement script and can be used to  move anygame object
 using UnityEngine;
 
 public class DroneSimpleMove : MonoBehaviour
@@ -36,6 +38,7 @@ public class DroneSimpleMove : MonoBehaviour
        
 
     }
+    // aditional suffix of 2 is added to variables so that they do not conflict with same name variables of other script
     private float wantedYRotation2;
     [HideInInspector] public float currentYRotation2;
     private float rorateAmountByKeys2 = 2.5f;

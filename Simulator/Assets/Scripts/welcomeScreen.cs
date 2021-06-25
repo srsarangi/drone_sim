@@ -1,10 +1,17 @@
-﻿using System.Collections;
+﻿// This is basically a menu -- Welcome Screen
+// images and tect heading are for display purpose
+// the buttons hav clickable event which activates the correspondog function in thi script
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class welcomeScreen : MonoBehaviour
 {
+    // The function just loads the corresponding scene - similarly of all undermentioned functions
+    // Ensure the scene has been put in build setings
+
    public void LoadManualFlight ()
    {
    	SceneManager.LoadScene("ManualSwarm");

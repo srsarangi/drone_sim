@@ -38,6 +38,7 @@ public float rayRange = 14;
     public float upForce;
     void MovementUpDown (){
         if ((Mathf.Abs(Input.GetAxis("Vertical"))>0.2f||Mathf.Abs(Input.GetAxis("Horizontal"))>0.2f )){
+            // I us to make drone move up words and K will make drone go down
             if (Input.GetKey(KeyCode.I)||Input.GetKey(KeyCode.K)){
                 ourDrone.velocity = ourDrone.velocity;
             }
@@ -135,6 +136,7 @@ public float rayRange = 14;
     		}
     		currentYRotation= Mathf.SmoothDamp(currentYRotation, wantedYRotation, ref rotationYVelocity, 0.25f);
     	}
+    // to make drone sound like a real drone we added sound to drone
         private AudioSource droneSound;
         void DroneSound(){
             droneSound.pitch = 1+ (ourDrone.velocity.magnitude /100);
