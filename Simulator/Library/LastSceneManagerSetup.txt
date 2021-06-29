@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scenes/New Scene/FollowLeaderSwarm.unity
+- path: Assets/scenes/New Scene/DroneCamera.unity
   isLoaded: 1
   isActive: 1

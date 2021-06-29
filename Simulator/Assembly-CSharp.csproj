@@ -97,7 +97,6 @@
     <Compile Include="Assets\Realistic Drone\drone\Tools\lineDrawer.cs" />
     <Compile Include="Assets\scenes\navScene\playerController.cs" />
     <Compile Include="Assets\Scripts\cameraFollowScript.cs" />
-    <Compile Include="Assets\Scripts\CamToRawImage.cs" />
     <Compile Include="Assets\Scripts\collisionAvoidance.cs" />
     <Compile Include="Assets\Scripts\creditsScreenScript.cs" />
     <Compile Include="Assets\Scripts\DroneMovementScript.cs" />

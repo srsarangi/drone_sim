@@ -13,7 +13,7 @@ public class Path : MonoBehaviour
     // only when the path is selected then only lines will be visible
  	// void OnDrawGizmosSelected(){
  		Gizmos.color =linecolor;
-
+        // path is list of nodes 
  		Transform[] pathTransforms = GetComponentsInChildren<Transform>(); 
  		nodes = new List<Transform>();
  		for(int i =0; i<pathTransforms.Length;i++)
@@ -23,6 +23,7 @@ public class Path : MonoBehaviour
  				nodes.Add(pathTransforms[i]);
  			}
  		}
+        // draw line node ot node
  		for (int i = 0; i<nodes.Count; i++)
  		{
  			Vector3 currentNode = nodes[i].position;
@@ -36,7 +37,9 @@ public class Path : MonoBehaviour
  			{
  				previousNode = nodes[nodes.Count-1].position;
  			} 
+            // Draw line connecting nodes
  			Gizmos.DrawLine(previousNode,currentNode);
+            // Draw Sphere at nodes 
  			Gizmos.DrawWireSphere(currentNode,0.5f);
  		}
 

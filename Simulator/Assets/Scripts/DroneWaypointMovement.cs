@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +18,7 @@ public class DroneWaypointMovement : MonoBehaviour
     // The target (cylinder) position.
     private Transform target;
     // Start is called before the first frame update
+    //header is used to arrange code in inspector
     [Header("Sensors")]
     public float sensorLength =14f;
     
@@ -46,8 +49,8 @@ private int k =0;
     {
     	
         //ApplySteer();
-        MoveToNextNode();
-        MoveInCircuit();
+        MoveToNextNode(); // to move drone forward force applied
+        MoveInCircuit();  // to form a circuit 
         Sensors();
     }
     // dont use now used in cars 
@@ -59,20 +62,17 @@ private int k =0;
        //Debug.Log(newSteer);
     }
 
-
+    // moving drone from note to node 
     void MoveToNextNode()
  	{
  		 float step =  speed * Time.deltaTime;
-        //Quaternion target_Rotation = Quaternion.Euler(currentNode1);
+    
         // Rotate the drone every frame so it keeps looking at the target
-        //transform.position = Vector3.MoveTowards(transform.position, nodes[currentNode1].position, step);
-        //transform.position += transform.forward * Time.deltaTime * 20f;
+   
         Vector3 relativePos = nodes[currentNode1].position - transform.position;
         
 
-        ////Quaternion rotation = Quaternion.LookRotation(relativePos);
-        ////transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime);
-        ////transform.rotation = rotation;
+   
         if ((relativePos.magnitude <= 2f) && (currentNode1 != nodes.Count))
         {
             //transform.rotation = Quaternion.LookRotation(-(transform.position - nodes[currentNode1].position));
@@ -108,6 +108,7 @@ private int k =0;
         //transform.rotation = Quaternion.LookRotation(newDirection);
 
     }
+    // to form circuit 
     void MoveInCircuit()
  	{
  		if (Vector3.Distance(transform.position, nodes[currentNode1].position)<0.05f)
@@ -124,7 +125,7 @@ private int k =0;
 
 
  	}
-
+    // function to create sensors
  	void Sensors()
  	{
  		RaycastHit hit;
@@ -137,6 +138,7 @@ private int k =0;
  		// front sensor
  		if (Physics.Raycast(sensorStartPosition,transform.forward,out hit , sensorLength))
  		{
+            // to check current position 
  			 // Vector3 currentPosition = transform.position;
  			// Debug.Log(transform.position);
  			if (!hit.collider.CompareTag("Terrain"))
@@ -144,67 +146,11 @@ private int k =0;
  				Debug.DrawLine(sensorStartPosition, hit.point,Color.red);
  				avoiding = true;
                 
-                // transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
-
-
-                // transform.position = Vector3.MoveTowards(transform.position, nodes[currentNode1 --].position, 0.0f);
-                // Debug.Log(transform.position);
-                // Debug.Log(currentNode1);
-
-
-
-
-                //if (currentNode1 == 0)
-                //{
-                //    currentNode1 = nodes.Count;
-                //    Debug.Log(transform.position);
-                //    Debug.Log(currentNode1);
-                //}
-                //else
-                //{
-                //    currentNode1--;
-                //    Debug.Log(transform.position);
-                //    Debug.Log(nodes[currentNode1].position);
-                //}
-
-
-
             }
         }
 
 
-
-        // // bottom angle sensor 
-        // // if (Physics.Raycast(sensorStartPosition, Quaternion.AngleAxis(-frontSensorAngle, transform.forward) * transform.forward, out hit, sensorLength))
-        // // {
-        // //     if (!hit.collider.CompareTag("Terrain"))
-        // //     {
-        // //         Debug.DrawLine(sensorStartPosition, hit.point);
-        // //         avoiding = true;
-        // //         // avoidMultiplier -= 0;
-        // //     }
-        // // }
-        
-        // sensorStartPosition += transform.forward * frontSensorPosition.z;
-        // sensorStartPosition += transform.forward * frontSensorPosition.y;
-       
-        // if (Physics.Raycast( sensorStartPosition, transform.forward, out hit, sensorLength))
-        // {
-        //     // Vector3 currentPosition = transform.position;
-        //     // Debug.Log(transform.position);
-        //     if (!hit.collider.CompareTag("Terrain"))
-        //     {
-        //         Debug.DrawLine(sensorStartPosition, hit.point, Color.red);
-        //         avoiding = true;
-        //     }}
-
-
-
-
-
-
-
-
+        // To check current position
         // Debug.Log(transform.position);
         // right sensor
         sensorStartPosition += transform.right * frontSideSensorPosition;
@@ -267,18 +213,7 @@ private int k =0;
 
         }
 
-        //{
-        //         // code to turn the drone in direction of the target
-        //  Vector3 relativePos = nodes[currentNode1].transform.position - transform.position;
-        //  Quaternion rotation = Quaternion.LookRotation(relativePos);
-        //  transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime);
-        // }
-        // Enemy translate in forward direction.
-        // transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        // //Checking for any Obstacle in front.
-        // // Two rays left and right to the object to detect the obstacle.
-        // Transform leftRay = transform;
-        // Transform rightRay = transform;
+       
     }
 
 private void OnCollisionEnter(Collision collision)

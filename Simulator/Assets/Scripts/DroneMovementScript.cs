@@ -1,7 +1,11 @@
+
+
+// for manual movement of drone 
 //Tutorial Followed https://www.youtube.com/watch?v=3R_V4gqTs_I
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class DroneMovementScript : MonoBehaviour
 {
@@ -34,7 +38,7 @@ public float rayRange = 14;
 
         
     }
-
+    // for  vertical movement of drone
     public float upForce;
     void MovementUpDown (){
         if ((Mathf.Abs(Input.GetAxis("Vertical"))>0.2f||Mathf.Abs(Input.GetAxis("Horizontal"))>0.2f )){
@@ -74,7 +78,7 @@ public float rayRange = 14;
 
     	}
     }
-
+    // for forward movement of drone  
     private float movementForwardSpeed = 500.0f;
     private float tiltAmountForward = 0;
     private float tiltVilocityForward;
@@ -87,8 +91,8 @@ public float rayRange = 14;
 
     	}
     }
-   
-    	private float sideMovementAmount =300.0f;
+        // for sideways movement of drone
+        private float sideMovementAmount =300.0f;
     	private float tiltAmountSideways ;
     	private float tiltAmountVelocity;
     	private void Swerwing(){
@@ -121,8 +125,8 @@ public float rayRange = 14;
     }
 
 
-
-    	private float wantedYRotation;
+        // For rotation of drone about its axis 
+        private float wantedYRotation;
     	[HideInInspector]public float currentYRotation;
     	private float rorateAmountByKeys= 2.5f;
     	private float rotationYVelocity;
