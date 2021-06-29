@@ -6,15 +6,16 @@ Do calibrations before the first flight
  
 
 **Project Entry points in Simulator**      
-You have to learn Unity to work with it just basic programming in C# will not work    
-This is because unity is based on class and objects and inheritance concepts      
+You have to learn Unity to work with it just basic programming in C# will not work.      
+This is because unity is based on class and inheritance concepts.      
 All functionalities are implemented as a class.    
 Please refer Unity manual of the correct version of the unity   
 **Basic knowledge of how to make a unity project**  
 
 ***Refer to the project narrated slides to understand the concept used***    
 
-***Brackeys Tutorial ***  very good to start with videos 1-10   
+***Brackeys Tutorial***  
+Very good to start with videos 1-10     
 https://www.youtube.com/watch?v=j48LtUkZRjU&list=PLPV2KyIb3jR5QFsefuO2RlAgWEz6EvVi6    
 
 Car AI tutorial series for sensors and path  
