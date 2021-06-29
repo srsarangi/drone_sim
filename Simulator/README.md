@@ -1,11 +1,11 @@
-# *Drone Simulator*  
+# *Project Entry Points*  
 
-** Experiment**  
+**Experiment**    
 Never fly drone alone  
 Do calibrations before the first flight    
  
 
-**Project Entry points in Simulator**    
+**Project Entry points in Simulator**      
 You have to learn Unity to work with it just basic programming in C# will not work    
 This is because unity is based on class and objects and inheritance concepts      
 All functionalities are implemented as a class.    
