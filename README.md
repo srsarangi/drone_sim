@@ -8,6 +8,8 @@ Drones have developed in recent years, especially small drones. Drones are very 
 
 Multiple drones when flown in coordination with each other constitute the drone swarm. This swarming of drones enhances the capabilities of flight packages and these could be used for defensive and offensive action based on the configuration of the package.
 
+### Also Read https://github.com/srsarangi/drone_sim/blob/48100867fe6beff3c7244b775a7828a5dcc4b4b4/Simulator/ProjectEntryPoints.md to get started on this project.
+
 **Drone Project**
 
 ***System Configuration for Simulator***  
