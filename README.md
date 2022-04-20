@@ -114,6 +114,7 @@ Models of UTS pro - for testing to be replaced before release
   
 Nikita Bhamu Student B.Tech+M.Tech  CSE IITD  
 Harshit Verma Student M.Tech CSE IITD
+
 Kishore Yadav Student M Tech CSE IITD  
 Diksha Moolchandani Student PHD  CSE IITD  
 Prof. SR Sarangi CSE IITD   
