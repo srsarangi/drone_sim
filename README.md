@@ -11,7 +11,7 @@ Multiple drones when flown in coordination with each other constitute the drone 
 ### Also Read https://github.com/srsarangi/drone_sim/blob/48100867fe6beff3c7244b775a7828a5dcc4b4b4/Simulator/ProjectEntryPoints.md to get started on this project.
 
 **Drone Project**
-
+## Version 1(START)
 ***System Configuration for Simulator***  
 Tested on   
 Unity  Editor Version            OS  
@@ -77,8 +77,35 @@ https://docs.unity3d.com/ScriptReference/AI.NavMesh.html
 		1.	**Drone Swarming.** Single path in combination with follow the leader is used).
 
 		2.	**Independent Drones.** Independent path for each drone implemented. The target for the drones is kept the same. Drones located at different locations of the scene take different paths for reaching their destination.
+## Version 1(END)
 
 
+## Version 2(START)
+***System Configuration for Simulator***  
+Tested on   
+Unity  Editor Version            OS  
+Unity 2020.3.33                Windows 10  
+Unity 2020.3.33                Ubuntu 18.04  
+
+***System Requirements for Simulator***  
+Unity editor 2020.3.33 windows / ubuntu OS  
+Text editor for C#   
+
+***How to run Simulator***  
+Install Unity in OS and open the simulator v2 folder  
+Navigate to Asset folder and then to Scene folder and then to new scene
+Select the scene which you want to open.
+
+***Structure of Simulator Project***  
+	Scripts are placed in Scripts folder  
+	Scene are placed in Drone Project/Simulator/Assets/scenes/new scenes folder    
+	car and People models are placed in Drone Project/Simulator/Assets 
+	RawImages folder contain raw images for drone camera project  
+	Prefabs are placed in prefab folder  
+	Abandoned buildings prefabs and scene placed in Drone Project/Simulator/Assets/Abandoned buildings  
+	Materials and Shaders are placed in their respective folder
+
+## Version 2(END)
 Credits :-
 
 Contributors of Links as mentioned above against each work
