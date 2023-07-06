@@ -1,0 +1,19 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel MyKernel
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+Texture2D<float4> depthTexture;
+RWStructuredBuffer<float> depthBuffer;
+int width;
+int height;
+
+[numthreads(8,8,1)]
+void MyKernel(uint3 threadID : SV_DispatchThreadID)
+{
+    // Get the depth value from the depth texture
+    float depth = depthTexture[threadID.xy].a * 40;
+
+    // Store the depth value in the depth buffer
+    depthBuffer[threadID.x + threadID.y * width] = depth;
+}
