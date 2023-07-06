@@ -12,6 +12,7 @@ public class LeaderWaypoints : MonoBehaviour  //// Script to to move leader auto
     public bool check = true;
     public bool switchenv = true;
     public bool go = false;
+    private bool nogps = false;
    
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class LeaderWaypoints : MonoBehaviour  //// Script to to move leader auto
         }
         g = GameObject.Find("Sphere1");
         waypoints.Add(g);
-        for(int i = 1; i <= 139; i++)
+        for(int i = 1; i <= 417; i++)
         {
             g = GameObject.Find("Sphere1 ("+ i + ")");
             waypoints.Add(g);
@@ -37,7 +38,7 @@ public class LeaderWaypoints : MonoBehaviour  //// Script to to move leader auto
     // Update is called once per frame
     void Update()
     {
-        if (go && switchenv)
+        if (go && switchenv && !nogps)
         {
             Vector3 pos = waypoints[index].transform.position;
             Vector3 velocity = Vector3.zero;
@@ -54,10 +55,30 @@ public class LeaderWaypoints : MonoBehaviour  //// Script to to move leader auto
                    
                     if(index == 201)
                     {
+
+                        nogps = true;
                         Debug.Log(index);
                         this.GetComponent<ChangeEnv>().change = true;
                     }
                     
+                }
+            }
+        }
+        else if (go && switchenv && nogps)
+        {
+            Vector3 pos = waypoints[index].transform.position;
+            Vector3 velocity = Vector3.zero;
+            float distance = Vector3.Distance(pos, transform.position);
+            ref_dist = ref_dist == -1 ? distance : ref_dist;
+
+            transform.position = Vector3.MoveTowards(transform.position, pos, 5f * Time.deltaTime);
+            if (distance < 0.1)
+            {
+                if (index < waypoints.Count - 1)
+                {
+                    ref_dist = -1;
+                    index++;
+
                 }
             }
         }

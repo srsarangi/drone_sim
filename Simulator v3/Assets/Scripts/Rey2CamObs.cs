@@ -12,10 +12,6 @@ public class Rey2CamObs : MonoBehaviour
     private readonly int resWidth = 256;
     private readonly int resHeight = 256;
 
-    //To store the recent parameters of the drones for th e front camera
-    /*private List<float> initial_xdist_frontCam = new List<float>();
-    private List<float> initial_zdist_frontCam = new List<float>();
-    private List<float> initial_ydist_frontCam = new List<float>();*/
 
     //To store the recent parameters of the drones for the left camera
     private List<float> initial_xdist_leftCam = new List<float>();
@@ -35,7 +31,6 @@ public class Rey2CamObs : MonoBehaviour
 
 
     //To store the current parameters of the drone
-    //private List<Tuple<Tuple<float, float>, float>> current_dist_frontCam = new List<Tuple<Tuple<float, float>, float>>();
     private List<Tuple<Tuple<float, float>, float>> current_dist_leftCam = new List<Tuple<Tuple<float, float>, float>>();
     private List<Tuple<Tuple<float, float>, float>> current_dist_rightCam = new List<Tuple<Tuple<float, float>, float>>();
 
@@ -48,6 +43,8 @@ public class Rey2CamObs : MonoBehaviour
     static int pixelcountThreshold = 10;
     static int obstaclePixelCountThreshold = 50;
 
+
+    //Depth Shader info
     public enum ReplacementMode
     {
         ObjectId = 0,
@@ -59,7 +56,6 @@ public class Rey2CamObs : MonoBehaviour
 
 
     private bool startit = true;
-    //private float avgDisplacement = 0f;
     private Vector3 avgDisplacement = Vector3.zero;
     private Vector3 targetposition;
     private int counter = 0;
@@ -110,7 +106,7 @@ public class Rey2CamObs : MonoBehaviour
             !visited[row, col]);
     }
 
-    void DFS(float[][] depthMap, int row, int col, int n, int l, List<Tuple<int, int>> list, bool[,] visited)
+    void BFS(float[][] depthMap, int row, int col, int n, int l, List<Tuple<int, int>> list, bool[,] visited)
     {
         // These arrays are used to get row and column
         // numbers of 4 neighbours of a given cell
@@ -138,7 +134,6 @@ public class Rey2CamObs : MonoBehaviour
                 }
             }
         }
-        // Recur for all connected neighbours
     }
 
     Tuple<List<List<Tuple<int, int>>>, List<List<Tuple<int, int>>>> connectedComponents(float[][] depthMap, int n, int l)
@@ -156,7 +151,7 @@ public class Rey2CamObs : MonoBehaviour
                 if (!visited[i, j] && depthMap[i][j] < threshold)
                 {
                     var list = new List<Tuple<int, int>>();
-                    DFS(depthMap, i, j, n, l, list, visited);
+                    BFS(depthMap, i, j, n, l, list, visited);
                     if (list.Count > pixelcountThreshold)
                     {
                         components.Add(list);
@@ -184,22 +179,21 @@ public class Rey2CamObs : MonoBehaviour
 
     private int i = 1;
 
-    List<Tuple<Tuple<List<Tuple<Tuple<int, int>, float>>, List<int>>, List<Tuple<Tuple<Tuple<int, int>, Tuple<int, int>>, float>>>> computeDepth()
+    //Get all compents with there depth
+    List<Tuple<Tuple<List<Tuple<Tuple<int, int>, float>>, List<int>>, List<Tuple<Tuple<Tuple<int, int>, Tuple<int, int>>, float>>>> computeDepth()  
     {
         List<Tuple<Tuple<List<Tuple<Tuple<int, int>, float>>, List<int>>, List<Tuple<Tuple<Tuple<int, int>, Tuple<int, int>>, float>>>> answer = new List<Tuple<Tuple<List<Tuple<Tuple<int, int>, float>>, List<int>>, List<Tuple<Tuple<Tuple<int, int>, Tuple<int, int>>, float>>>>();
 
         for (int camera_num = 0; camera_num < cameras.Count; camera_num++)
         {
             List<Tuple<Tuple<int, int>, float>> depth = new List<Tuple<Tuple<int, int>, float>>();
-            //Stroring the number of pixels the drone has
+           
             List<int> weights = new List<int>();
-            //Storing th ebounding boxes of the drones
             List<Tuple<Tuple<Tuple<int, int>, Tuple<int, int>>, float>> bounding_boxes = new List<Tuple<Tuple<Tuple<int, int>, Tuple<int, int>>, float>>();
 
             RenderTexture rt = new RenderTexture(resWidth, resHeight, 24);
             cameras[camera_num].GetComponent<Camera>().targetTexture = rt;
             Texture2D screenShot = new Texture2D(resWidth, resHeight, TextureFormat.RGB24, false);
-            //cameras[camera_num].GetComponent<Camera>().usePhysicalProperties = true;
             cameras[camera_num].GetComponent<Camera>().RemoveAllCommandBuffers();
             var cb = new CommandBuffer();
             cb.SetGlobalFloat("_OutputMode", (int)ReplacementMode.DepthCompressed); // @TODO: CommandBuffer is missing SetGlobalInt() method
@@ -218,36 +212,18 @@ public class Rey2CamObs : MonoBehaviour
             Destroy(rt);
             byte[] bytes = screenShot.EncodeToJPG();
 
-            //Debug.Log(this.transform.name);
-            /*if (true)
-            {
-                Debug.Log("Here1");
-                string filename = ScreenShotName(resWidth, resHeight, this.gameObject.name, camera_num);
-                System.IO.File.WriteAllBytes(filename, bytes);
-            }*/
-
-            /*float[][] arr = new float[256][];
-            for (int i = 0; i < 256; i++)
-            {
-                arr[i] = new float[256];
-                for (int j = 0; j < 256; j++)
-                {
-                    arr[i][j] = screenShot.GetPixel(j, i).grayscale * cameras[camera_num].GetComponent<Camera>().farClipPlane;
-                }
-            }*/
 
             float[][] arr = new float[256][];
-            StreamWriter writetext = new StreamWriter("write" + camera_num + this.gameObject.name + ".txt");
             for (int i = 0; i < 256; i++)
             {
-                string line = "";
+               
                 arr[i] = new float[256];
                 for (int j = 0; j < 256; j++)
                 {
                     arr[i][j] = screenShot.GetPixel(j, i).grayscale * 40;
-                    line += (arr[i][j].ToString() + " ");
+                    
                 }
-                writetext.WriteLine(line);
+                
             }
 
             Tuple<List<List<Tuple<int, int>>>, List<List<Tuple<int, int>>>> comps = connectedComponents(arr, 256, 256);
@@ -274,7 +250,7 @@ public class Rey2CamObs : MonoBehaviour
                 drone_row /= componentsDrone[i].Count;
                 drone_col /= componentsDrone[i].Count;
 
-                //depth.Add(min_depth);
+                
                 var tuple1 = new Tuple<int, int>(drone_row, drone_col);
                 var tuple2 = new Tuple<Tuple<int, int>, float>(tuple1, min_depth);
                 depth.Add(tuple2);
@@ -319,14 +295,7 @@ public class Rey2CamObs : MonoBehaviour
         return answer;
     }
 
-    private string ScreenShotName(int width, int height, string s, int i)
-    {
-        Debug.Log("screenshot" + s + i + ".jpeg");
-        return string.Format("{0}/screenshot" + s + i + ".jpeg",
-                             Application.dataPath,
-                             width, height,
-                             System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
-    }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -347,7 +316,7 @@ public class Rey2CamObs : MonoBehaviour
     public float r7 = 1f;
     public float r8 = 1f;
 
-    //public float frontWeight = 1f;
+    
     public float leftWeight = 0.5f;
     public float rightWeight = 0.5f;
     private int dronec = 0;
@@ -368,24 +337,11 @@ public class Rey2CamObs : MonoBehaviour
         {
             return true;
         }
-        //if(Mathf.Abs(mindisp_y)
+        
 
 
         return false;
-        /*if (bound.Item2 > 16)
-        {
-            return true;
-        }
-        if(Mathf.Abs(bound.Item1.Item1.Item1) > 8)
-        {
-            return true;
-        }
-        if (Mathf.Abs(bound.Item1.Item1.Item2) > 8)
-        {
-            return true;
-        }
-
-        return false;*/
+        
     }
 
     bool outOfCriticalRegionright(Tuple<Tuple<Tuple<float, float>, Tuple<float, float>>, float> bound)
@@ -417,11 +373,11 @@ public class Rey2CamObs : MonoBehaviour
             halfAngle.Add(f / 2);
         }
 
-        if (startit)
+        if (startit)  //First Frame
         {
             targetposition = this.transform.position;
-            List<Tuple<Tuple<List<Tuple<Tuple<int, int>, float>>, List<int>>, List<Tuple<Tuple<Tuple<int, int>, Tuple<int, int>>, float>>>> initialDepth_Weight_obstacle = computeDepth();
-            //List<Tuple<List<Tuple<Tuple<int, int>, float>>, List<int>>> initialDepth_Weight = computeDepth();
+            List<Tuple<Tuple<List<Tuple<Tuple<int, int>, float>>, List<int>>, List<Tuple<Tuple<Tuple<int, int>, Tuple<int, int>>, float>>>> initialDepth_Weight_obstacle = computeDepth(); // Get Depth of all components
+           
 
 
             int camera_num = 0; //LEFT CAMERA
@@ -434,7 +390,7 @@ public class Rey2CamObs : MonoBehaviour
                 float z_depth = initialDepth_WeightLeft.Item1[i].Item2;
                 float disp_x = 0;
                 float disp_y = 0;
-                //float yangle = 0;
+                
 
                 // Y-Axis
                 if (pix_y > 128)
@@ -463,8 +419,7 @@ public class Rey2CamObs : MonoBehaviour
                     //angle1 = angle;
                 }
 
-                //Debug.Log("depth value " + z_depth + " pix_x" + pix_x +" angle" + angle1);
-                //Debug.Log("befote x is " + disp_x + " y is " + 1.8f * disp_y + " z is " + z_depth);
+               
                 float actualx = disp_x * Mathf.Cos(halfAngle[0] * Mathf.PI / 180) - z_depth * Mathf.Sin(halfAngle[0] * Mathf.PI / 180);
                 float actualz = disp_x * Mathf.Sin(halfAngle[0] * Mathf.PI / 180) + z_depth * Mathf.Cos(halfAngle[0] * Mathf.PI / 180);
 
@@ -535,7 +490,7 @@ public class Rey2CamObs : MonoBehaviour
 
             startit = false;
         }
-        else
+        else  // Every other frame
         {
             List<Tuple<Tuple<List<Tuple<Tuple<int, int>, float>>, List<int>>, List<Tuple<Tuple<Tuple<int, int>, Tuple<int, int>>, float>>>> depth_Weight_obstacle = computeDepth();
 
@@ -546,7 +501,7 @@ public class Rey2CamObs : MonoBehaviour
             Tuple<List<Tuple<Tuple<int, int>, float>>, List<int>> depth_WeightLeft = depth_Weight_obstacle[camera_num].Item1;
             List<Tuple<Tuple<Tuple<int, int>, Tuple<int, int>>, float>> obstacleLeft = depth_Weight_obstacle[camera_num].Item2;
 
-            for (int i = 0; i < depth_WeightLeft.Item1.Count; i++)
+            for (int i = 0; i < depth_WeightLeft.Item1.Count; i++)  // left camera drones
             {
 
                 int pix_x = depth_WeightLeft.Item1[i].Item1.Item2;
@@ -583,8 +538,7 @@ public class Rey2CamObs : MonoBehaviour
                     //angle1 = angle;
                 }
 
-                //Debug.Log("depth value " + z_depth + " pix_x" + pix_x +" angle" + angle1);
-                //Debug.Log("befote x is " + disp_x + " y is " + 1.8f * disp_y + " z is " + z_depth);
+                
                 float actualx = disp_x * Mathf.Cos(halfAngle[0] * Mathf.PI / 180) - z_depth * Mathf.Sin(halfAngle[0] * Mathf.PI / 180);
                 float actualz = disp_x * Mathf.Sin(halfAngle[0] * Mathf.PI / 180) + z_depth * Mathf.Cos(halfAngle[0] * Mathf.PI / 180);
 
@@ -595,7 +549,7 @@ public class Rey2CamObs : MonoBehaviour
 
             float horizontalForce = 0;
             float verticalForce = 0;
-            for (int p = 0; p < obstacleLeft.Count; p++)
+            for (int p = 0; p < obstacleLeft.Count; p++) //Left  obstacle
             {
                
                 int minpix_x = obstacleLeft[p].Item1.Item1.Item2;
@@ -664,7 +618,7 @@ public class Rey2CamObs : MonoBehaviour
                 float actual_maxdisp_x = maxdisp_x * Mathf.Cos(halfAngle[0] * Mathf.PI / 180) - z_depth * Mathf.Sin(halfAngle[0] * Mathf.PI / 180);
 
                 float actualz = mindisp_x * Mathf.Sin(halfAngle[0] * Mathf.PI / 180) + z_depth * Mathf.Cos(halfAngle[0] * Mathf.PI / 180);
-                Debug.Log("z depth is" + actualz);
+                //Debug.Log("z depth is" + actualz);
                 if (minpix_x >= 80 && actualz < 8)
                 {
                     horizontalForce += 1;
@@ -678,14 +632,14 @@ public class Rey2CamObs : MonoBehaviour
             }
 
             Vector3 obstacleAvoidance_left = new Vector3(horizontalForce, verticalForce, 0);
-            Debug.Log("avioddance force " + obstacleAvoidance_left);
+            //Debug.Log("avioddance force " + obstacleAvoidance_left);
 
 
             camera_num += 1; //RIGHT CAMERA
             Tuple<List<Tuple<Tuple<int, int>, float>>, List<int>> depth_WeightRight = depth_Weight_obstacle[camera_num].Item1;
             List<Tuple<Tuple<Tuple<int, int>, Tuple<int, int>>, float>> obstacleRight = depth_Weight_obstacle[camera_num].Item2;
 
-            for (int i = 0; i < depth_WeightRight.Item1.Count; i++)
+            for (int i = 0; i < depth_WeightRight.Item1.Count; i++) // left camera drones
             {
 
                 int pix_x = depth_WeightRight.Item1[i].Item1.Item2;
@@ -735,7 +689,7 @@ public class Rey2CamObs : MonoBehaviour
             horizontalForce = 0;
             verticalForce = 0;
 
-            for (int p = 0; p < obstacleRight.Count; p++)
+            for (int p = 0; p < obstacleRight.Count; p++)// right obstacle
             {
                 int minpix_x = obstacleRight[p].Item1.Item1.Item2;
                 int minpix_y = obstacleRight[p].Item1.Item1.Item1;
@@ -827,7 +781,7 @@ public class Rey2CamObs : MonoBehaviour
             //Find a force through Reynold's algorithm only when we have equal number of drones in the previous and the current frame
             //Left force
 
-            if (current_dist_leftCam.Count == previous_dist_leftCam.Count && current_dist_leftCam.Count > 0)
+            if (current_dist_leftCam.Count == previous_dist_leftCam.Count && current_dist_leftCam.Count > 0)  // For same tags
             {
 
                 //Rule 1 : Seperation
@@ -835,11 +789,11 @@ public class Rey2CamObs : MonoBehaviour
                 int neighbours = 0;
                 for (int i = 0; i < current_dist_leftCam.Count; i++)
                 {
-                    //Vector3 direction = this.transform.position - g.transform.position;
+                    
                     Vector3 direction = -(new Vector3(current_dist_leftCam[i].Item1.Item1, current_dist_leftCam[i].Item1.Item2, current_dist_leftCam[i].Item2));
                     float distance = direction.sqrMagnitude;
                     direction.Normalize();
-                    //float distance = Vector3.Distance(g.transform.position, this.transform.position);
+                    
                     direction = direction / distance;
                     seperation += direction;
                     neighbours += 1;
@@ -869,13 +823,13 @@ public class Rey2CamObs : MonoBehaviour
 
                 droneVel_left = r1 * seperation + r2 * alignment + r3 * cohesion ;
                 Debug.Log("left velo" + droneVel_left);
-                //Debug.Log(droneVel_front.x + "  " + droneVel_front.y + "  " + droneVel_front.z);
+                
             }
             
 
 
             //Right force
-            if (current_dist_rightCam.Count == previous_dist_rightCam.Count && current_dist_rightCam.Count > 0)
+            if (current_dist_rightCam.Count == previous_dist_rightCam.Count && current_dist_rightCam.Count > 0) // For same tags
             {
 
                 //Rule 1 : Seperation
@@ -883,11 +837,11 @@ public class Rey2CamObs : MonoBehaviour
                 int neighbours = 0;
                 for (int i = 0; i < current_dist_rightCam.Count; i++)
                 {
-                    //Vector3 direction = this.transform.position - g.transform.position;
+                    
                     Vector3 direction = -(new Vector3(current_dist_rightCam[i].Item1.Item1, current_dist_rightCam[i].Item1.Item2, current_dist_rightCam[i].Item2));
                     float distance = direction.sqrMagnitude;
                     direction.Normalize();
-                    //float distance = Vector3.Distance(g.transform.position, this.transform.position);
+                    
                     direction = direction / distance;
                     seperation += direction;
                     neighbours += 1;
@@ -916,7 +870,7 @@ public class Rey2CamObs : MonoBehaviour
                 cohesion /= neighbours;
 
                 droneVel_right = r1 * seperation + r2 * alignment + r3 * cohesion ;
-                //Debug.Log(droneVel_front.x + "  " + droneVel_front.y + "  " + droneVel_front.z);
+                
             }
 
 
@@ -924,8 +878,6 @@ public class Rey2CamObs : MonoBehaviour
 
 
             droneVel = leftWeight * (droneVel_left + r4 * obstacleAvoidance_left) + rightWeight * (droneVel_right + r4 * obstacleAvoidance_right);
-            Debug.Log("left forcwe" + (leftWeight * (droneVel_left + r4 * obstacleAvoidance_left)));
-            Debug.Log("velo" + droneVel);
             this.transform.GetComponent<Rigidbody>().velocity = multiplier * droneVel;
 
             previous_dist_leftCam.Clear();

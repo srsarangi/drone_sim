@@ -23,12 +23,7 @@ public class ChangeEnv : MonoBehaviour  ///// Changing The environment from GPS 
             {
                 foreach (var drone in players)
                 {
-                    drone.GetComponent<Rey2CamObs>().enabled = false;
-                    drone.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                }
-                foreach (var drone in players)
-                {
-                    drone.GetComponent<NewNonGps>().enabled = true;
+                    drone.GetComponent<Rey2CamObs>().enabled = true;
                 }
                 this.GetComponent<LeaderWaypoints>().switchenv = true;
                 check = false;
