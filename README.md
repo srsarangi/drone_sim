@@ -106,6 +106,32 @@ Select the scene which you want to open.
 	Materials and Shaders are placed in their respective folder
 
 ## Version 2(END)
+
+
+## Version 3(START)
+***System Configuration for Simulator***  
+Tested on   
+Unity  Editor Version            OS  
+Unity 2020.3.40                Windows 10
+
+
+***How to run Simulator***  
+Install Unity in OS and open the simulator v2 folder  
+Navigate to Asset folder and then to Scene folder and then to new scene
+Select the scene which you want to open.
+
+
+***For running C++ plugin***  
+If you want to runn C++ plugin for Depthmap calculation. Code is provided for c++. Make .dll plugin with that before opening project in unity. Then, save that DLL file along with standard opencv dll into Assets/plugin folder
+
+***Structure of Simulator Project***  
+	Scripts are placed in Scripts folder  
+	Scene are placed in Drone Project/Simulator/Assets/scenes/new scenes folder    
+	Their are final four Scene in four different environment. Check Folder Assets/scenes/new scenes/GPS-abled and Assets/scenes/new scenes/GPS-denied. All the scripts associated with them are final scripts.
+
+
+## Version 3(END)
+
 Credits :-
 
 Contributors of Links as mentioned above against each work
@@ -116,6 +142,7 @@ Nikita Bhamu Student B.Tech+M.Tech  CSE IITD
 Harshit Verma Student M.Tech CSE IITD
 
 Kishore Yadav Student M Tech CSE IITD  
+Akanksha Dixit Student PHD CSE IITD
 Diksha Moolchandani Student PHD  CSE IITD  
 Prof. SR Sarangi CSE IITD   
 
